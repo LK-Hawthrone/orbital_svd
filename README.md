@@ -105,7 +105,7 @@ Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/eart
 | <img src="samples/satelite_imagery/swirl_original.jpg" width="350"> | <img src="samples/output_imagery/swirl_compressed.jpg" width="350"> |
 
 
-**You can also search the imagery (original and results) on the /samples folder**
+**"Codec Call Tip": You can also search the imagery (original and results) on the /samples folder**
 
 ## Mission Summary
 The hybrid Gaussian Blur-SVD Single-Channel-JPEG pipeline achieved an average compression rate of ~71%. Significant gains were observed in images with high-frequency noise, where the Gaussian filter prepared the matrix for a more efficient SVD. In real missions we can also adjusts the parameters to choose between eficiency or quality, but also search a balance between these parameters.
