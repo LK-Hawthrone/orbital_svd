@@ -15,7 +15,6 @@ Dependencies
  * NumPy: Linear algebra backend for SVD operations.
  * Pillow (PIL): Image I/O and Gaussian filtering.
  * Tkinter: Xubuntu-optimized GUI.
-How to Deploy
  * Ensure all tactical modules (main_gui.py, logic_svd.py, results_viewer.py) are in the same sector.
  * Configure mission constraints in config_mission.xml.
  * Execute python main_gui.py.
@@ -30,15 +29,17 @@ The development of this algorithm wasn't born in a sterile lab, but from necessi
  * Information Decay: Preventing "blocky" artifacts to maintain maintenance of forms.
 
 ## 5. Solutions & Trade-offs
-The Gaussian Low-Pass Filter
+The Gaussian Low-Pass Filter: 
 To neutralize noise, we implemented a Gaussian Blur as pre-processing.
 > Why? Gaussian Blur acts as a Low-Pass Filter. In the frequency domain, it attenuates high frequencies (noise/sharp edges) while preserving low frequencies (main forms), making the SVD much more efficient.
 > 
-Single-Channel Monochromatic Strategy
-Transitioned from RGB to L-mode (Luminance).
+
+Single-Channel Monochromatic Strategy:
+> Transitioned from RGB to L-mode (Luminance).
  * Trade-off: Loss of color data.
  * Benefit: Dramatic increase in signal-to-noise ratio. Plus, Black and White provides a much more professional and focused aesthetic for research profiles.
-JPEG & Huffman Encoding
+
+JPEG & Huffman Encoding:
 The final stage utilizes the JPEG algorithm. By combining SVD (linear algebra reduction) with Huffman encoding (entropy), we achieve superior hybrid compression.
 
 #  Experimental Results & Benchmarking
@@ -49,7 +50,8 @@ Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/eart
 | <img src="samples/satelite_imagery/carajas_original.jpg" width="350"> | <img src="samples/output_imagery/carajas_compressed.jpg" width="350"> |
 
 
-#3 Technical Data
+## 3 Technical Data
+
 **Parameters: k=0.08, Quality=65, Blur=1.5.**
 
 ***Disclaimer: All images source comes from the NASA's Earth laboratory, all rights reserved from NASA (Thanks NASA!)***
