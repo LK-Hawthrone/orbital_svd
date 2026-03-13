@@ -1,6 +1,6 @@
-## Orbital Image SVD Compressor (Tkinter Version)
+## Orbital Image SVD Compressor
 # Author: L.K Hawthrone
-# Purpose: CCSDS-compliant image processing tool
+# Purpose: Image processing utility tool
 
 import tkinter as tk
 from tkinter import filedialog, messagebox
