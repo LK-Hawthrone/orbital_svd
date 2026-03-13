@@ -1,46 +1,45 @@
 # 🛰️ Orbital-SVD: Low-Rank
 
  **Matrix Approximation for Satellite Telemetry**
-Version: 1.0.0-Beta
-Classification: Open Research / Independent Research 
-License: Apache License 2.0
-Author: Lawrence K. Hawthrone
+- Version: 1.0.0-Beta
+- Classification: Open Research / Independent Studies  
+- License: Apache License 2.0
+- Author: Lawrence K. Hawthrone 
 
 ## 1. Introduction & Concept
-The Orbital-SVD Processor is a specialized tool designed for Ground Station data processing. It focuses on the compression and noise mitigation of orbital imagery. This software is a refactored implementation aimed at being CCSDS-compliant (Consultative Committee for Space Data Systems), providing a robust pipeline for handling high-resolution satellite data that must be optimized for terrestrial storage and quick transmission.
+> The Orbital-SVD Processor is my utility tool designed for studies about Ground Station data processing. It focuses on the compression and noise mitigation of orbital imagery. This software is a refactored
+implementation aimed providing a robust mathematical pipeline for handling high-resolution satellite data 
+that must be optimized for terrestrial storage and quick transmission.
 
-## 2. Software Parameters & Usage
-Dependencies
- * Python 3.10+
+## 2. Software Parameters & Usage Dependencies
+
+ * Python 3.12+
  * NumPy: Linear algebra backend for SVD operations.
  * Pillow (PIL): Image I/O and Gaussian filtering.
  * Tkinter: Xubuntu-optimized GUI.
  * Ensure all tactical modules (main_gui.py, logic_svd.py, results_viewer.py) are in the same sector.
  * Configure mission constraints in config_mission.xml.
  * Execute python main_gui.py.
- * Select the target orbital image and verify the reconstruction in the Results Viewer.
 
-## 3. Mission Backstory: The "Lattes" Incident
-The development of this algorithm wasn't born in a sterile lab, but from necessity. During a critical deployment of data to the Lattes Platform (a Brazilian researcher database), a hard constraint was encountered: a 70KB limit for profile imagery. With a 150KB source file saturated with high-frequency background noise, standard methods failed. This tool was developed to "finesse" the data into compliance.
+ ## 3. Research Backstory: The "Lattes" Incident
+ The development of this research algorithm wasn't born in a sterile lab, but from necessity. During my deployment of data to the Lattes Platform (a Brazilian researcher database), a hard constraint was encountered: a 70KB limit for profile imagery. With a 150KB source file saturated with high-frequency background noise, the standard methods failed. This simple tool was quickly developed for "finesse" the data into compliance.
 
-## 4. Encountered Challenges (The Tactical Bottlenecks)
+## 4. Encountered Challenges
  * High-Frequency Noise: Background structures acting as digital noise, consuming precious bits in the compression header.
  * RGB Complexity: Multi-channel SVD processing increased overhead without adding relevant scientific data for this specific mission.
  * Information Decay: Preventing "blocky" artifacts to maintain maintenance of forms.
 
 ## 5. Solutions & Trade-offs
-The Gaussian Low-Pass Filter: 
-To neutralize noise, we implemented a Gaussian Blur as pre-processing.
-> Why? Gaussian Blur acts as a Low-Pass Filter. In the frequency domain, it attenuates high frequencies (noise/sharp edges) while preserving low frequencies (main forms), making the SVD much more efficient.
-> 
+* The Gaussian Low-Pass Filter: 
+> To neutralize noise, we implemented a Gaussian Blur as pre-processing.
+Why? Gaussian Blur acts as a Low-Pass Filter. In the frequency domain, it attenuates high frequencies (noise/sharp edges) while preserving low frequencies (main forms), making the SVD much more efficient.
 
-Single-Channel Monochromatic Strategy:
-> Transitioned from RGB to L-mode (Luminance).
- * Trade-off: Loss of color data.
- * Benefit: Dramatic increase in signal-to-noise ratio. Plus, Black and White provides a much more professional and focused aesthetic for research profiles.
+* Single-Channel Monochromatic Strategy:
+> Transitioned from RGB to L-mode (Luminance). The Trade-off is cthe loss of color data but the benefit is a Dramatic increase in signal-to-noise ratio. 
+Plus, Black and White provides a much more professional and focused aesthetic for research profiles.
 
-JPEG & Huffman Encoding:
-The final stage utilizes the JPEG algorithm. By combining SVD (linear algebra reduction) with Huffman encoding (entropy), we achieve superior hybrid compression.
+* JPEG & Huffman Encoding:
+> The final stage utilizes the JPEG algorithm. By combining SVD (linear algebra reduction) with Huffman encoding (entropy), we achieve superior hybrid compression.
 
 #  Experimental Results & Benchmarking
 Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/earth/earth-observatory/brazils-carajas-mines-144457/)
@@ -54,7 +53,8 @@ Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/eart
 
 **Parameters: k=0.08, Quality=65, Blur=1.5.**
 
-***Disclaimer: All images source comes from the NASA's Earth laboratory, all rights reserved from NASA (Thanks NASA!)***
+> Disclaimer: All images source comes from the NASA's Earth laboratory, all rights reserved for NASA 
+(Thanks NASA!)
 
 | Mission Target | Original Size | SVD Output | Reduction | Source Link |
 |---|---|---|---|---|
@@ -69,7 +69,7 @@ Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/eart
 
 ## See another images
 
-### A. [Blue Marble](https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/)
+### A. [Blue Marble (2002) 1km resolution](https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/)
 | Original | SVD Output |
 | :---: | :---: |
 | <img src="samples/satelite_imagery/blue_marble_original.jpg" width="350"> | <img src="samples/output_imagery/blue_marble_compressed.jpg" width="350"> |
@@ -94,12 +94,12 @@ Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/eart
 | :---: | :---: |
 | <img src="samples/satelite_imagery/cyclone_original.jpg" width="350"> | <img src="samples/output_imagery/cyclone_compressed.jpg" width="350"> |
 
-### F. [A Dust Vetige of the Old West](https://science.nasa.gov/earth/earth-observatory/a-dusty-vestige-of-the-old-west-154481/)
+### F. [A Dust Vestige of the Old West](https://science.nasa.gov/earth/earth-observatory/a-dusty-vestige-of-the-old-west-154481/)
 | Original | SVD Output |
 | :---: | :---: |
 | <img src="samples/satelite_imagery/old_west_artifact.jpg" width="350"> | <img src="samples/output_imagery/old_west_compressed.jpg" width="350"> |
 
-### G. [A Swirl of a Day for phytoplankton](https://science.nasa.gov/earth/earth-observatory/a-swirl-of-a-day-for-phytoplankton-154086/)
+### G. [A Swirl of a Day for Phytoplankton](https://science.nasa.gov/earth/earth-observatory/a-swirl-of-a-day-for-phytoplankton-154086/)
 | Original | SVD Output |
 | :---: | :---: |
 | <img src="samples/satelite_imagery/swirl_original.jpg" width="350"> | <img src="samples/output_imagery/swirl_compressed.jpg" width="350"> |
@@ -108,7 +108,7 @@ Visual Comparison (Example: Carajás Mine, source: https://science.nasa.gov/eart
 **"Codec Call Tip": You can also search the imagery (original and results) on the /samples folder**
 
 ## Mission Summary
-The hybrid Gaussian Blur-SVD Single-Channel-JPEG pipeline achieved an average compression rate of ~71%. Significant gains were observed in images with high-frequency noise, where the Gaussian filter prepared the matrix for a more efficient SVD. In real missions we can also adjusts the parameters to choose between eficiency or quality, but also search a balance between these parameters.
+The hybrid Gaussian Blur-SVD-JPEG pipeline achieved an average compression rate of ~71%. Significant gains were observed in images with high-frequency noise, where the Gaussian filter prepared the matrix for a more efficient SVD. In real missions we can also adjusts the parameters to choose between eficiency or quality, but also search a balance between these parameters.
 
 
 ## 8. Final Considerations
